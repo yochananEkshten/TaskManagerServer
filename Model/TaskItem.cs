@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Model.Enums;
+
 
 namespace Model
 {
@@ -14,17 +14,18 @@ namespace Model
     {
 
         [Key]
-        public int Id;
+        public int Id { get; set; }
         [Required]
         [MaxLength(100)]
-        public string Name;
+        public string Name { get; set; }
         [MaxLength(200)]
-        public string Description;
-        [Required]
+        public string ?Description { get; set; }
+    
         public bool IsCompleted { get; set; }
-        [Required]
+  
         public TaskLevel TaskLevel { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime ToDu { get; set; }
 
     }
 }

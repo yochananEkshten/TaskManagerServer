@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Enums
+
+    public enum TaskLevel
     {
-
-        public enum TaskLevel
-        {
-            Low=1 ,   
-            Normal=2 ,  
-            Urgent =3,   
-        }
-
-
+        Low = 1,
+        Normal = 2,
+        Urgent = 3,
     }
+
 }
