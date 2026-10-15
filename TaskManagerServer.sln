@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerServer", "TaskManagerServer.csproj", "{5B4FDC47-4B82-421F-8BBE-2FC1C6400C72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerServer", "TaskManagerServer\TaskManagerServer.csproj", "{5B4FDC47-4B82-421F-8BBE-2FC1C6400C72}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{09A41D76-C046-47E1-BCD1-6A80F4FCD46B}"
 EndProject
