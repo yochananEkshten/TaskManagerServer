@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Api.Entities;
+
 
 namespace Repository.Interfaces
 {
-    internal interface ITaskRepository
+    public interface ITaskRepository
     {
+        List<TaskItemDTO>GetAll();
     }
 }
