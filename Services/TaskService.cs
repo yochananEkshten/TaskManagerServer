@@ -22,5 +22,15 @@ namespace Services
         {
             return _taskRepository.GetAll();
         }
+        public int Add(SaveTaskRequest request)                      
+        {
+            return _taskRepository.Add(request);
+        }
+
+        public bool Update(int id, SaveTaskRequest request)           
+        {
+            return _taskRepository.Update(id, request);
+        }
     }
+}
 }

@@ -32,5 +32,32 @@ namespace Repository
                 return _mapper.Map<List<TaskItemDTO>>(tasks);
             }
         }
+        public int Add(SaveTaskRequest request)                                 // ← חדש
+        {
+            using (TaskManagerContext context = _factory.CreateDbContext())
+            {
+                TaskItem task = _mapper.Map<TaskItem>(request);
+                task.CreatedAt = DateTime.UtcNow;
+
+                context.TaskItems.Add(task);
+                context.SaveChanges();
+
+                return task.Id;
+            }
+        }
+
+        public bool Update(int id, SaveTaskRequest request)                     // ← חדש
+        {
+            using (TaskManagerContext context = _factory.CreateDbContext())
+            {
+                TaskItem? task = context.TaskItems.Find(id);
+                if (task == null)
+                    return false;
+
+                _mapper.Map(request, task);
+                context.SaveChanges();
+                return true;
+            }
+        }
     }
 }

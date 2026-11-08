@@ -21,6 +21,23 @@ namespace TaskManagerServer.Controllers
         {
             return _taskService.GetAll();
         }
+        [HttpPost]
+        public ActionResult<int> Add([FromBody] SaveTaskRequest request)
+        {
+            int newId = _taskService.Add(request);
+            return Ok(newId);
+        }
+
+        [HttpPut("{id}")]                                                 
+        public ActionResult Update([FromRoute] int id, [FromBody] SaveTaskRequest request)
+        {
+            bool updated = _taskService.Update(id, request);
+
+            if (!updated)
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }
 

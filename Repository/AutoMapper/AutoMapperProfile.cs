@@ -11,7 +11,7 @@ namespace Repository
         public AutoMapperProfile()
         {
             CreateMap<TaskItem, TaskItemDTO>();
-            CreateMap<TaskItemDTO, TaskItem>();
+            CreateMap<SaveTaskRequest, TaskItem>();
         }
     }
 
