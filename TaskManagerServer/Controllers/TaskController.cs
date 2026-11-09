@@ -21,6 +21,16 @@ namespace TaskManagerServer.Controllers
         {
             return _taskService.GetAll();
         }
+        [HttpGet("{id}")]
+        public ActionResult<TaskItemDTO> GetById([FromRoute] int id)
+        {
+            TaskItemDTO? task = _taskService.GetById(id);
+
+            if (task == null)
+                return NotFound();
+
+            return Ok(task);
+        }
         [HttpPost]
         public ActionResult<int> Add([FromBody] SaveTaskRequest request)
         {
@@ -34,6 +44,16 @@ namespace TaskManagerServer.Controllers
             bool updated = _taskService.Update(id, request);
 
             if (!updated)
+                return NotFound();
+
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public ActionResult Delete([FromRoute] int id)
+        {
+            bool deleted = _taskService.Delete(id);
+
+            if (!deleted)
                 return NotFound();
 
             return NoContent();

@@ -22,6 +22,10 @@ namespace Services
         {
             return _taskRepository.GetAll();
         }
+        public TaskItemDTO? GetById(int id)
+        {
+            return _taskRepository.GetById(id);
+        }
         public int Add(SaveTaskRequest request)                      
         {
             return _taskRepository.Add(request);
@@ -31,6 +35,10 @@ namespace Services
         {
             return _taskRepository.Update(id, request);
         }
+        public bool Delete(int id)
+        {
+            return _taskRepository.Delete(id);
+        }
+      
     }
-}
 }

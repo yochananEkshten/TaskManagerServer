@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class TaskRepository:ITaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly IDbContextFactory<TaskManagerContext> _factory;
         private readonly IMapper _mapper;
@@ -32,7 +32,20 @@ namespace Repository
                 return _mapper.Map<List<TaskItemDTO>>(tasks);
             }
         }
-        public int Add(SaveTaskRequest request)                                 // ← חדש
+        public TaskItemDTO? GetById(int id)
+        {
+            using (TaskManagerContext context = _factory.CreateDbContext())
+            {
+                TaskItem? task = context.TaskItems.Find(id);
+                if (task == null)
+                {
+                    return null;
+                }
+                return _mapper.Map<TaskItemDTO>(task);
+
+            }
+        }
+        public int Add(SaveTaskRequest request)
         {
             using (TaskManagerContext context = _factory.CreateDbContext())
             {
@@ -46,7 +59,7 @@ namespace Repository
             }
         }
 
-        public bool Update(int id, SaveTaskRequest request)                     // ← חדש
+        public bool Update(int id, SaveTaskRequest request)
         {
             using (TaskManagerContext context = _factory.CreateDbContext())
             {
@@ -59,5 +72,19 @@ namespace Repository
                 return true;
             }
         }
+        public bool Delete(int id)
+        {
+            using (TaskManagerContext context = _factory.CreateDbContext())
+            {
+                TaskItem? task = context.TaskItems.Find(id);
+                if (task == null)
+                    return false;
+
+                context.TaskItems.Remove(task);
+                context.SaveChanges();
+                return true;
+            }
+        }
+       
     }
 }

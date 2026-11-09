@@ -6,7 +6,11 @@ namespace Repository.Interfaces
     public interface ITaskRepository
     {
         List<TaskItemDTO> GetAll();
-        int Add(SaveTaskRequest request);                   // ← חדש
-        bool Update(int id, SaveTaskRequest request);       // ← חדש
-    }
+        TaskItemDTO GetById(int id);
+        int Add(SaveTaskRequest request);               
+        bool Update(int id, SaveTaskRequest request);
+        bool Delete(int id);
+       
 }
+}
+   
