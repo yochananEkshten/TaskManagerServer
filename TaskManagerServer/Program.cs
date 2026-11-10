@@ -12,6 +12,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureServices();
 builder.Services.AddCors();
 var app = builder.Build();
+string[] allowedOrigins = builder.Configuration
+    .GetSection("AllowedOrigins")
+    .GetSection(app.Environment.EnvironmentName)
+    .Get<string[]>() ?? Array.Empty<string>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
